@@ -17,6 +17,7 @@ class _HomePageState extends State<HomePage> {
   // search box
   String _searchText = "";
   int _hintIndex = 0;
+  int _pageIndex = 0;
   List<String> _hintList = ['Saws', 'Screwdrivers', 'Hammers', 'Firestops'];
   List<String> bannerImages = []; // banner images
   Timer? _timer;
@@ -51,7 +52,7 @@ class _HomePageState extends State<HomePage> {
                   offset: Offset(0, getScreenHeight(context) * -0.4),
                   child: OverflowBox(
                       child: Container(
-                          height: getScreenHeight(context) * 0.5,
+                          height: getScreenHeight(context) * 0.52,
                           decoration: BoxDecoration(
                             color: hiltiRed,
                             borderRadius: BorderRadius.circular(80),
@@ -121,7 +122,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 SizedBox(
-                  height: getScreenHeight(context) * 0.035,
+                  height: getScreenHeight(context) * 0.03,
                 ),
                 Container(
                   width: getScreenWidth(context) * 0.9,
@@ -148,6 +149,126 @@ class _HomePageState extends State<HomePage> {
                     autoplayDelay: 4000, // switch images every 4 seconds
                   ),
                 ),
+                SizedBox(height: getScreenHeight(context) * 0.02),
+                Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  SizedBox(
+                    width: getScreenWidth(context) * 0.06,
+                  ),
+                  Text(
+                    "Categories",
+                    style: TextStyle(
+                        fontFamily: "Helvetica",
+                        fontSize: getScreenHeight(context) * 0.025,
+                        fontWeight: FontWeight.bold,
+                        color: hiltiRed),
+                  )
+                ]),
+                SizedBox(height: getScreenHeight(context) * 0.015),
+                Container(
+                    height: getScreenHeight(context) * 0.21,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: [
+                        SizedBox(width: getScreenWidth(context) * 0.06),
+                        itemCategories(
+                            context,
+                            "assets/images/items/cordless_tools.png",
+                            "assets/images/items/power_tools.png",
+                            "Cordless Tools",
+                            "Power Tools"),
+                        SizedBox(width: getScreenWidth(context) * 0.035),
+                        itemCategories(
+                            context,
+                            "assets/images/items/software.png",
+                            "assets/images/items/dust_management.png",
+                            "Software",
+                            "Dust Management & Cleaning"),
+                        SizedBox(width: getScreenWidth(context) * 0.035),
+                        itemCategories(
+                            context,
+                            "assets/images/items/tool_inserts.png",
+                            "assets/images/items/direct_fastening.png",
+                            "Tool Inserts",
+                            "Direct Fastening"),
+                        SizedBox(width: getScreenWidth(context) * 0.035),
+                        itemCategories(
+                            context,
+                            "assets/images/items/fasteners.png",
+                            "assets/images/items/firestop.png",
+                            "Fasteners",
+                            "Firestop & Fire Protection"),
+                        SizedBox(width: getScreenWidth(context) * 0.035),
+                        itemCategories(
+                            context,
+                            "assets/images/items/modular_support.png",
+                            "assets/images/items/construction_chemicals.png",
+                            "Modular Support System",
+                            "Construction Chemicals"),
+                        SizedBox(width: getScreenWidth(context) * 0.035),
+                        itemCategories(
+                            context,
+                            "assets/images/items/services.png",
+                            "assets/images/items/on_track.png",
+                            "Services",
+                            "ON!Track Asset Management"),
+                        SizedBox(width: getScreenWidth(context) * 0.06),
+                      ],
+                    )),
+                Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  SizedBox(
+                    width: getScreenWidth(context) * 0.06,
+                  ),
+                  Text(
+                    "Training Course",
+                    style: TextStyle(
+                        fontFamily: "Helvetica",
+                        fontSize: getScreenHeight(context) * 0.025,
+                        fontWeight: FontWeight.bold,
+                        color: hiltiRed),
+                  )
+                ]),
+                SizedBox(height: getScreenHeight(context) * 0.015),
+                Container(
+                  height: getScreenHeight(context) * 0.13,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      SizedBox(width: getScreenWidth(context) * 0.06),
+                      Container(
+                          padding: EdgeInsets.all(12),
+                          margin: const EdgeInsets.only(bottom: 4.0),
+                          width: getScreenWidth(context) * 0.7,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.0),
+                              color: hiltiWhite,
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Colors.grey,
+                                  offset: Offset(0.0, 1.0), //(x,y)
+                                  blurRadius: 4.0,
+                                ),
+                              ]),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Image.asset(
+                                "assets/images/items/firestop.png",
+                              ),
+                            ],
+                          )),
+                      SizedBox(
+                        width: getScreenWidth(context) * 0.035,
+                      ),
+                      Container(
+                        color: Colors.orangeAccent,
+                        height: 10,
+                        width: 150,
+                        alignment: Alignment.center,
+                        child: Text("Hey"),
+                      )
+                    ],
+                  ),
+                )
               ]),
             ]),
             drawer: Container(
@@ -172,6 +293,57 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-            )));
+            ),
+            // set container for the elevation and CLipRRect for orignal shape
+            bottomNavigationBar: Container(
+                height: getScreenHeight(context) * 0.1,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(40.0),
+                    color: hiltiWhite,
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.grey,
+                        offset: Offset(0.0, 1.0), //(x,y)
+                        blurRadius: 6.0,
+                      ),
+                    ]),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(40)),
+                  child: BottomNavigationBar(
+                    type: BottomNavigationBarType.fixed,
+                    elevation: 10.0,
+                    currentIndex: _pageIndex,
+                    onTap: (int index) {
+                      setState(() {
+                        _pageIndex = index;
+                      });
+                    },
+                    selectedItemColor: hiltiRed,
+                    unselectedItemColor: Colors.grey,
+                    showUnselectedLabels: true,
+                    selectedLabelStyle: TextStyle(
+                        fontFamily: "Helvetica",
+                        fontSize: getScreenHeight(context) * 0.018,
+                        color: hiltiRed),
+                    unselectedLabelStyle: TextStyle(
+                        fontFamily: "Helvetica",
+                        fontSize: getScreenHeight(context) * 0.018,
+                        color: Colors.grey),
+                    items: [
+                      BottomNavigationBarItem(
+                        icon: Icon(Icons.home),
+                        label: "Home",
+                      ),
+                      BottomNavigationBarItem(
+                          icon: Icon(Icons.dynamic_feed), label: "Feed"),
+                      BottomNavigationBarItem(
+                          icon: Icon(Icons.message), label: "Messages"),
+                      BottomNavigationBarItem(
+                          icon: Icon(Icons.bike_scooter), label: "Order"),
+                      BottomNavigationBarItem(
+                          icon: Icon(Icons.person), label: "Profile"),
+                    ],
+                  ),
+                ))));
   }
 }
