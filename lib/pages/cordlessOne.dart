@@ -2,9 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../utils/constant.dart';
-import 'cordlessTwo.dart';
-import 'itemPage.dart';
-
 
 class cordlessOne extends StatelessWidget {
   @override
