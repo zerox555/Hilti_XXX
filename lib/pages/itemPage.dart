@@ -3,12 +3,14 @@ import 'package:hilti_xxx/utils/constant.dart';
 
 import 'HomePage.dart';
 import 'cordlessOne.dart';
+import 'cordlessTwo.dart';
 
 class itemPage extends StatefulWidget {
   const itemPage({Key? key}) : super(key: key);
 
   @override
   State<itemPage> createState() => _itemPageState();
+
 }
 
 class _itemPageState extends State<itemPage> {
@@ -17,7 +19,6 @@ class _itemPageState extends State<itemPage> {
   String _searchText = "";
   int _pageIndex = 0;
 
-  Widget _currentBody = cordlessOne(); // default body
 
 
   void _onTap(int index) {
@@ -88,7 +89,25 @@ class _itemPageState extends State<itemPage> {
               ],
             ),
           ),
-          body: _currentBody,
+          // changing only the body with Navigator
+          // routes ==> /homePage/cordlessOne/cordlessTwo
+          body:  Navigator(
+            initialRoute: '/',
+            onGenerateRoute: (RouteSettings settings) {
+              WidgetBuilder builder;
+              switch (settings.name) {
+                case '/':
+                  builder = (BuildContext _) => cordlessOne();
+                  break;
+                case '/second':
+                  builder = (BuildContext _) => cordlessTwo();
+                  break;
+                default:
+                  throw Exception('Invalid route: ${settings.name}');
+              }
+              return MaterialPageRoute(builder: builder, settings: settings);
+            },
+          ),
           bottomNavigationBar: navBar(context, _pageIndex, _onTap),
         ));
   }

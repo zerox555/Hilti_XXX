@@ -28,7 +28,7 @@ var banner = [
   "assets/images/banner4.png",
 ];
 
-Container individualItem(BuildContext context, String image, String item) {
+Container individualItem(BuildContext context, String image, item) {
   return Container(
       padding: EdgeInsets.all(12),
       margin: const EdgeInsets.only(bottom: 4.0),
@@ -63,17 +63,16 @@ Container individualItem(BuildContext context, String image, String item) {
 
 }
 
-Column itemCategories(BuildContext context, String image1, String image2,
-    String item1, String item2) {
+Column itemCategories(BuildContext context, String image1, image2,
+    item1, item2) {
   return Column(children: [
     individualItem(context, image1, item1),
     SizedBox(height: getScreenHeight(context) * 0.005),
     individualItem(context, image2, item2),
-
   ]);
 }
 
-Container trainingContainer(BuildContext context, String image, String trainingName, String price) {
+Container trainingContainer(BuildContext context, String image, trainingName, price) {
   return Container(
       padding: EdgeInsets.all(8),
       margin: const EdgeInsets.only(bottom: 4.0),
@@ -185,6 +184,55 @@ Container navBar(BuildContext context, int pageIndex, Function(int) onTapCallbac
         ),
       )
   );
+}
+
+Container singleCordless(BuildContext context, String image, item) {
+  return Container(
+    padding: EdgeInsets.all(8),
+    margin: const EdgeInsets.only(bottom: 4.0),
+    width: getScreenWidth(context) * 0.4,
+    height: getScreenHeight(context) * 0.25,
+    decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        color: hiltiWhite,
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.grey,
+            offset: Offset(0.0, 1.0), //(x,y)
+            blurRadius: 4.0,
+          ),
+        ]),
+    child: Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Image.asset(
+            image,
+            width: getScreenWidth(context) * 0.16,
+          ),
+          SizedBox(height: getScreenHeight(context) * 0.03),
+          Text(
+            item,
+            style: TextStyle(fontFamily: "Helvetica", fontSize: 16),
+            textAlign: TextAlign.center,
+          )
+        ],
+      ),
+    ),
+  );
+}
+
+Row cordlessItems(BuildContext context, String image1, image2, item1, item2) {
+  return Row(
+    children: [
+      SizedBox(width: getScreenWidth(context) * 0.1,),
+      singleCordless(context, image1, item1),
+      SizedBox(width: getScreenWidth(context) * 0.02,),
+      singleCordless(context, image2, item2),
+      SizedBox(height: getScreenHeight(context) * 0.02,),
+    ],
+  );
+
 }
 
 
