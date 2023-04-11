@@ -67,6 +67,7 @@ flutter:
    - assets/images/training/
    - assets/images/cordless_tools/
    - assets/images/cordless_drill/
+   - assets/images/drill_drivers/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

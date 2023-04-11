@@ -4,8 +4,6 @@ import 'package:hilti_xxx/pages/cordlessOne.dart';
 import 'package:hilti_xxx/utils/constant.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
-import 'itemPage.dart';
-
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -191,7 +189,7 @@ class _HomePageState extends State<HomePage> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => itemPage()));
+                                      builder: (context) => cordlessOne()));
                             },
                             child: individualItem(
                                 context,
