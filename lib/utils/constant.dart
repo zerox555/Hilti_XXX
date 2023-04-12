@@ -28,6 +28,14 @@ var banner = [
   "assets/images/banner4.png",
 ];
 
+var previewImage = [
+  "assets/images/drill_drivers/sf_4.jpg",
+  "assets/images/previewImages/pic1.png",
+  "assets/images/previewImages/pic2.jpg",
+  "assets/images/previewImages/pic3.jpg",
+  "assets/images/previewImages/pic4.jpg",
+];
+
 Container individualItem(BuildContext context, String image, item) {
   return Container(
       padding: EdgeInsets.all(12),

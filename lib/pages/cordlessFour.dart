@@ -33,9 +33,34 @@ class _cordlessFourState extends State<cordlessFour> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(
-                "assets/images/drill_drivers/sf_4.jpg",
-                width: getScreenWidth(context) * 0.5,
+              GestureDetector(
+                onTap: () {
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          contentPadding: EdgeInsets.all(5),
+                          content: Container(
+                            height: getScreenHeight(context) * 0.4,
+                            child: Swiper(
+                              itemCount: previewImage.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return Image(
+                                    image: AssetImage(previewImage[index]),
+                                    fit: BoxFit.cover);
+                              },
+                              control: SwiperControl(
+                                color: hiltiRed,
+                              ),
+                            ),
+                          ),
+                        );
+                      });
+                },
+                child: Image.asset(
+                  "assets/images/drill_drivers/sf_4.jpg",
+                  width: getScreenWidth(context) * 0.5,
+                ),
               ),
               Image.asset(
                 "assets/images/slider.png",
@@ -143,6 +168,7 @@ class _cordlessFourState extends State<cordlessFour> {
                   redTitle(context, "Applications"),
                   bulletPoints(context,
                       "• Driving screws up to 8 mm diameter in wood\n• Hole sawing up to 82 mm diameter in wood\n• Drilling in steel up to 10 mm diameter\n• Driving screws up to 4.8 mm diameter in steel\n• Drilling with auger and spade bits up to 26 mm diameter in wood"),
+                  SizedBox(height: getScreenHeight(context) * 0.1),
                 ],
               )
             ],
@@ -152,23 +178,186 @@ class _cordlessFourState extends State<cordlessFour> {
       Positioned(
           left: 0,
           right: 0,
-          bottom: 0,
-          child: Container(width: getScreenWidth(context), height: 50, child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              SizedBox(width: getScreenWidth(context) * 0.5, child:
-              ElevatedButton(
-                onPressed: () {},
-                child: Text("Buy Now"),
-                style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(Colors.yellow),)
-              ),),
-              ElevatedButton(
-                onPressed: () {},
-                child: Text("Button 2"),
-              ),
-            ],
-          ),))
+          bottom: -getScreenHeight(context) * 0.01,
+          child: Container(
+            width: getScreenWidth(context),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Expanded(
+                    child: SizedBox(
+                        height: getScreenHeight(context) * 0.08,
+                        child: ElevatedButton(
+                            onPressed: () {},
+                            child: Text("Buy Now"),
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(
+                                  Color.fromRGBO(218, 158, 49, 1)),
+                            )))),
+                Expanded(
+                    child: SizedBox(
+                  height: getScreenHeight(context) * 0.08,
+                  child: ElevatedButton(
+                      onPressed: () {
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                  title: Row(
+                                    children: [
+                                      Text(
+                                        "Purchase Information",
+                                        style: TextStyle(
+                                            fontFamily: "Helvetica",
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                  SizedBox(width: getScreenWidth(context) * 0.15,),
+                                  IconButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    icon: const Icon(Icons.clear),
+                                  )],
+                                  ),
+                                  insetPadding:
+                                      EdgeInsets.symmetric(vertical: 95, ),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10)),
+                                  ),
+                                  content: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Package Content",
+                                        style: TextStyle(
+                                            fontFamily: "Helvetica",
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Container(
+                                        width: getScreenWidth(context) * 0.6,
+                                        child: Text(
+                                          "• 1x Cordl drill driver SF 4-A22 ATC\n•1x Tool case SF 4-A22 assy",
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 100,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                          height:
+                                              getScreenHeight(context) * 0.02),
+                                      Text(
+                                        "Pack Size",
+                                        style: TextStyle(
+                                            fontFamily: "Helvetica",
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Text(
+                                        "• 1 piece",
+                                        style:
+                                            TextStyle(fontFamily: "Helvetica"),
+                                      ),
+                                      SizedBox(
+                                          height:
+                                              getScreenHeight(context) * 0.03),
+                                      Text(
+                                        "Discounted Net",
+                                        style:
+                                            TextStyle(fontFamily: "Helvetica"),
+                                      ),
+                                      SizedBox(
+                                          height:
+                                              getScreenHeight(context) * 0.01),
+                                      Text(
+                                        "RM1,100.00",
+                                        style: TextStyle(
+                                            fontFamily: "Helvetica",
+                                            fontSize: 25,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Text("See Fleet Price >",
+                                          style: TextStyle(
+                                              fontFamily: "Helvetica",
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.bold)),
+                                      SizedBox(
+                                          height:
+                                              getScreenHeight(context) * 0.03),
+                                      Text(
+                                        "Quantity",
+                                        style: TextStyle(
+                                            fontFamily: "Helvetica",
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      SizedBox(
+                                          height:
+                                              getScreenHeight(context) * 0.01),
+                                      Container(
+                                        width: getScreenWidth(context) * 0.5,
+                                        height:
+                                            getScreenHeight(context) * 0.055,
+                                        decoration: BoxDecoration(
+                                          border:
+                                              Border.all(color: Colors.black),
+                                          borderRadius:
+                                              BorderRadius.circular(5),
+                                        ),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsets.only(top: 2, left: 10),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                "Packs",
+                                                style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: Colors.grey),
+                                              ),
+                                              Text(
+                                                "1",
+                                                style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: Colors.grey),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                          height:
+                                              getScreenHeight(context) * 0.03),
+                                      SizedBox(
+                                        width: getScreenWidth(context) * 0.8,
+                                        child: ElevatedButton.icon(
+                                          icon: Icon(Icons.shopping_cart,
+                                              size: 20),
+                                          label: Text(
+                                            'Add to Cart',
+                                            style: TextStyle(fontSize: 16),
+                                          ),
+                                          style: ButtonStyle(
+                                            backgroundColor:
+                                                MaterialStateProperty.all<
+                                                    Color>(hiltiRed),
+                                          ),
+                                          onPressed: () => {},
+                                        ),
+                                      ),
+                                    ],
+                                  ));
+                            });
+                      },
+                      child: Text("Add to Cart"),
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(hiltiRed),
+                      )),
+                ))
+              ],
+            ),
+          ))
     ]);
   }
 
