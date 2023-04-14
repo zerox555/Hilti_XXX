@@ -39,7 +39,7 @@ var previewImage = [
 Container individualItem(BuildContext context, String image, item) {
   return Container(
       padding: EdgeInsets.all(12),
-      margin: const EdgeInsets.only(bottom: 4.0),
+      margin: const EdgeInsets.symmetric(vertical: 2.0),
       width: getScreenWidth(context) * 0.52,
       height: getScreenHeight(context) * 0.085,
       decoration: BoxDecoration(
@@ -83,7 +83,7 @@ Container trainingContainer(
     BuildContext context, String image, trainingName, price) {
   return Container(
       padding: EdgeInsets.all(8),
-      margin: const EdgeInsets.only(bottom: 4.0),
+      margin: const EdgeInsets.symmetric(vertical: 2.0),
       width: getScreenWidth(context) * 0.7,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.0),
