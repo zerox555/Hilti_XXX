@@ -22,7 +22,7 @@ class _cordlessOneState extends State<cordlessOne> {
   
   Container pageStuff(BuildContext context) {
     return Container(
-        height: getScreenHeight(context) * 0.6,
+        height: getScreenHeight(context) * 0.65,
         child: ListView(children: [
           Row(
             children: [
@@ -110,7 +110,7 @@ class _cordlessOneState extends State<cordlessOne> {
             ],
           ),
           SizedBox(
-            height: getScreenHeight(context) * 0.01,
+            height: getScreenHeight(context) * 0.03,
           ),
         ]));
 
